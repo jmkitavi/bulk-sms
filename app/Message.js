@@ -20,14 +20,21 @@ const config = {
 }
 
 export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      message: '',
+    }
+  }
   sendMessage = () => {
     let numbers = ['254705542919', '254705542919']
+    let message = this.state.message ? this.state.message : 'This is a test message.'
     // const numbers = this.state.numbers.map((num) => num)
 
     const params = {
       username: 'katana',
       to: numbers,
-      message: 'This is a test message.',
+      message,
     }
 
     const postParams = Object.keys(params).map((key) => {
@@ -58,7 +65,7 @@ export default class App extends Component {
           }}
           multiline
           numberOfLines={5}
-          onChangeText={() => {}}
+          onChangeText={(text) => this.setState({ message: text })}
           placeholder={'Enter Message'}
         />
         <TouchableOpacity
