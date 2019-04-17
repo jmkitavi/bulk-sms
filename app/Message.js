@@ -23,17 +23,35 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      numbers: [],
       message: '',
     }
   }
-  sendMessage = () => {
+
+  componentDidMount = async () => {
     let numbers = ['254705542919', '254705542919']
+    const spreadsheet = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTdQY9GNa2Dhw-EXEoWwK95HomsVvE-0XhanJKbmMQy_g_N3r9WZ4OwH35nrgmaPsagY6hhNwCADEhU/pub?gid=0&single=true&output=csv'
+
+    axios.get(spreadsheet, { headers: { 'Cache-Control': 'no-cache' } })
+    .then((response) => {
+      let numbers = []
+
+      response.data.split('\n').map((num) => numbers.push(Number(num)))
+
+      this.setState({
+        numbers: numbers
+      })
+    })
+    .catch((error) => console.log('error', error))
+  }
+
+  sendMessage = () => {
+    let numbers = [254705542919, 254705542919]
     let message = this.state.message ? this.state.message : 'This is a test message.'
-    // const numbers = this.state.numbers.map((num) => num)
 
     const params = {
       username: 'katana',
-      to: numbers,
+      to: this.state.numbers,
       message,
     }
 
