@@ -30,7 +30,7 @@ export default class App extends Component {
 
   componentDidMount = async () => {
     let numbers = ['254705542919', '254705542919']
-    const spreadsheet = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTdQY9GNa2Dhw-EXEoWwK95HomsVvE-0XhanJKbmMQy_g_N3r9WZ4OwH35nrgmaPsagY6hhNwCADEhU/pub?gid=0&single=true&output=csv'
+    const spreadsheet = 'SPREAD SHEET URL GOES HERE'
 
     axios.get(spreadsheet, { headers: { 'Cache-Control': 'no-cache' } })
     .then((response) => {
