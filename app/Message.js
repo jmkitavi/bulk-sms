@@ -15,7 +15,7 @@ const config = {
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
     'Accept': 'application/json; charset=utf-8',
-    'apiKey': '7053f05983fef37d2c0fa62a5bd4205586404084b55694d52a4004f750600b1e',
+    'apiKey': 'API KEY GOES HERE',
   }
 }
 
